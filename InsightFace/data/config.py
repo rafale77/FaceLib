@@ -2,13 +2,14 @@ from easydict import EasyDict as edict
 from pathlib import Path
 import torch
 from torch.nn import CrossEntropyLoss
-
+import os
+home = str(Path.home())+"/.homeassistant/
 
 def get_config(training=True):
     conf = edict()
-    conf.data_path = Path('data')
-    conf.work_path = Path('weights/')
-    conf.model_path = conf.work_path / 'models'
+    conf.data_path = home+'/recogface/'
+    conf.work_path = home+'/model/'
+    conf.model_path = conf.work_path
     conf.log_path = conf.work_path / 'log'
     conf.save_path = conf.work_path
     conf.input_size = [112, 112]
